@@ -1,9 +1,18 @@
 import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+
+
 const app = express();
 
-
 app.use(express.urlencoded({extended: true}));
+// app.use("/public", express.static(__dirname + "/public"));
 
+main().catch(err => console.log(err));
+
+async function main(){
+  mongoose.connect('mongodb://localhost:27017/cbCafeDB')
+}
 
 app.route('/')
   .get(function(req, res) {
