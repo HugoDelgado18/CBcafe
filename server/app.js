@@ -4,8 +4,11 @@ import https from 'https';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+import reviewRoutes from './routes/reviews.js';
 
 const app = express();
+
+app.use('/reviews', reviewRoutes);
 
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
@@ -14,54 +17,9 @@ app.use(cors());
 main().catch(err => console.log(err));
 
 async function main(){
-  mongoose.connect(process.env.ATLAS_KEY)
+  mongoose.connect(`${process.env.ATLAS_KEY}`)
 };
 
-// const reviewSchema = new mongoose.schema({
-//   name: String,
-//   rating: {
-//     type: Number,
-//     required: {$gte: 5}
-//   },
-//   content: String
-// });
-//
-// const Review = mongoose.model("Review", reviewSchema);
-//
-// const review = new Review({
-//   name: Leah,
-//   rating: 5,
-//   content: "This place is great!!"
-// })
-//
-//
-//
-//
-// app.route('/')
-//   .get(function(req, res) {
-//
-//     res.send('Success')
-//   })
-//   .post(function(req, res){
-//     let rName = req.body.reviewName;
-//     let rRating = req.body.reviewRating;
-//     let rContent = req.body.reviewContent;
-//
-//     const reviewNew = new Review({
-//       name: rName,
-//       rating: rRating,
-//       content: rContent
-//     })
-//
-//     reviewNew.save(function(err){
-//       if (err){
-//         console.log(err);
-//       } else {
-//         res.redirect("/")
-//       }
-//     })
-//
-//   });
 
 
 
