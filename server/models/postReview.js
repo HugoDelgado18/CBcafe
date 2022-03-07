@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const reviewSchema = mongoose.schema({
+const reviewSchema = mongoose.Schema({
    name: String,
    rating: {
      type: Number,

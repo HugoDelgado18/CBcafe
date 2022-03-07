@@ -6,7 +6,7 @@ const router = express.Router();
 
   router.get("/", getReviews );
 
-  route.post("/", createReviews);
+  router.post("/", createReviews);
 
 
 export default router;
